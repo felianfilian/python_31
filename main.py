@@ -1,8 +1,13 @@
 from tkinter import *
+import pandas
 
 BACKGROUND_COLOR = "#B1DDC6"
 FONT_01 = ("Arial", 40, "italic")
 FONT_02 = ("Arial", 60, "bold")
+
+data = pandas.read_csv("data/french_words.csv").to_dict()
+print(data)
+
 
 window = Tk()
 window.title("Flashcards")
