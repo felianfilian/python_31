@@ -14,7 +14,15 @@ card_front_img = PhotoImage(file="images/card_front.png")
 canvas.create_image(400, 263, image=card_front_img)
 canvas.create_text(400, 150, text="Title", font=FONT_01)
 canvas.create_text(400, 250, text="word", font=FONT_02)
-canvas.grid(row=0, column=0)
+canvas.grid(row=0, column=0, columnspan=2)
+
+right_image = PhotoImage(file="images/right.png")
+check_button = Button(image=right_image)
+check_button.grid(row=1, column=0)
+
+cross_image = PhotoImage(file="images/wrong.png")
+cancel_button = Button(image=cross_image)
+cancel_button.grid(row=1, column=1)
 
 window.mainloop()
 
