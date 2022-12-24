@@ -8,6 +8,9 @@ FONT_02 = ("Arial", 60, "bold")
 data = pandas.read_csv("data/french_words.csv").to_dict()
 print(data)
 
+def next_card():
+    pass
+
 
 window = Tk()
 window.title("Flashcards")
@@ -22,11 +25,11 @@ canvas.create_text(400, 250, text="word", font=FONT_02)
 canvas.grid(row=0, column=0, columnspan=2)
 
 right_image = PhotoImage(file="images/right.png")
-check_button = Button(image=right_image)
+check_button = Button(image=right_image, command=next_card)
 check_button.grid(row=1, column=0)
 
 cross_image = PhotoImage(file="images/wrong.png")
-cancel_button = Button(image=cross_image)
+cancel_button = Button(image=cross_image, command=next_card)
 cancel_button.grid(row=1, column=1)
 
 window.mainloop()
