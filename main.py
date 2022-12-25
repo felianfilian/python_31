@@ -16,9 +16,7 @@ except FileNotFoundError:
     pass
 
 def right_answer():
-    global chosen_word
-    print(chosen_word)
-    new_data = data.remove()
+    to_learn.remove(chosen_word)
     next_card()
 
 
