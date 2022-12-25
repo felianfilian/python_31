@@ -7,20 +7,17 @@ FONT_01 = ("Arial", 40, "italic")
 FONT_02 = ("Arial", 60, "bold")
 
 data = pandas.read_csv("data/french_words.csv").to_dict(orient="records")
-
-card_front = True
+chosen_word = {}
 
 def next_card():
-    global card_front
+    global chosen_word
     chosen_word = random.choice(data)
-    if card_front:
-        card_front = False
-        canvas.itemconfig(card_title, text="French")
-        canvas.itemconfig(card_word, text=chosen_word["French"])
-    else:
-        card_front = True
-        canvas.itemconfig(card_title, text="English")
-        canvas.itemconfig(card_word, text=chosen_word["English"])
+    canvas.itemconfig(card_title, text="French")
+    canvas.itemconfig(card_word, text=chosen_word["French"])
+
+def show_back():
+    canvas.itemconfig(card_title, text="English")
+    canvas.itemconfig(card_word, text=chosen_word["English"])
 
 window = Tk()
 window.title("Flashcards")
@@ -42,6 +39,7 @@ cross_image = PhotoImage(file="images/wrong.png")
 cancel_button = Button(image=cross_image, command=next_card)
 cancel_button.grid(row=1, column=1)
 
+window.after(3000, show_back)
 next_card()
 
 window.mainloop()
