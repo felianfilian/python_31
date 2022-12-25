@@ -1,3 +1,4 @@
+import random
 from tkinter import *
 import pandas
 
@@ -5,8 +6,9 @@ BACKGROUND_COLOR = "#B1DDC6"
 FONT_01 = ("Arial", 40, "italic")
 FONT_02 = ("Arial", 60, "bold")
 
-data = pandas.read_csv("data/french_words.csv").to_dict()
-print(data)
+data = pandas.read_csv("data/french_words.csv").to_dict(orient="records")
+chosen_word = random.choice(data)
+print(chosen_word)
 
 def next_card():
     pass
