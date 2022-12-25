@@ -11,8 +11,10 @@ chosen_word = random.choice(data)
 print(chosen_word)
 
 def next_card():
-    pass
+    print(chosen_word["French"])
+    print(chosen_word["English"])
 
+next_card()
 
 window = Tk()
 window.title("Flashcards")
