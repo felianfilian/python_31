@@ -18,6 +18,7 @@ def next_card():
 def show_back():
     canvas.itemconfig(card_title, text="English")
     canvas.itemconfig(card_word, text=chosen_word["English"])
+    canvas.itemconfig(card_background, image=card_bg_back)
 
 window = Tk()
 window.title("Flashcards")
@@ -25,8 +26,9 @@ window.config(padx=50, pady=50, bg=BACKGROUND_COLOR)
 
 canvas = Canvas(width=800, height=526)
 canvas.config(bg=BACKGROUND_COLOR, highlightthickness=0)
-card_front_img = PhotoImage(file="images/card_front.png")
-canvas.create_image(400, 263, image=card_front_img)
+card_bg_front = card_front_img = PhotoImage(file="images/card_front.png")
+card_bg_back = card_back_img = PhotoImage(file="images/card_back.png")
+card_background = canvas.create_image(400, 263, image=card_front_img)
 card_title = canvas.create_text(400, 150, text="Title", font=FONT_01)
 card_word = canvas.create_text(400, 250, text="word", font=FONT_02)
 canvas.grid(row=0, column=0, columnspan=2)
