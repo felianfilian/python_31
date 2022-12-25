@@ -6,7 +6,8 @@ BACKGROUND_COLOR = "#B1DDC6"
 FONT_01 = ("Arial", 40, "italic")
 FONT_02 = ("Arial", 60, "bold")
 
-data = pandas.read_csv("data/french_words.csv").to_dict(orient="records")
+data = pandas.read_csv("data/french_words.csv")
+to_learn = data.to_dict(orient="records")
 chosen_word = {}
 
 try:
@@ -25,7 +26,7 @@ def next_card():
     global chosen_word
     global flip_timer
     window.after_cancel(flip_timer)
-    chosen_word = random.choice(data)
+    chosen_word = random.choice(to_learn)
     canvas.itemconfig(card_title, text="French", fill="black")
     canvas.itemconfig(card_word, text=chosen_word["French"], fill="black")
     canvas.itemconfig(card_background, image=card_bg_front)
