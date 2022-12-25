@@ -8,10 +8,19 @@ FONT_02 = ("Arial", 60, "bold")
 
 data = pandas.read_csv("data/french_words.csv").to_dict(orient="records")
 
+card_front = True
+
 def next_card():
+    global card_front
     chosen_word = random.choice(data)
-    canvas.itemconfig(card_title, text="French")
-    canvas.itemconfig(card_word, text=chosen_word["French"])
+    if card_front:
+        card_front = False
+        canvas.itemconfig(card_title, text="French")
+        canvas.itemconfig(card_word, text=chosen_word["French"])
+    else:
+        card_front = True
+        canvas.itemconfig(card_title, text="English")
+        canvas.itemconfig(card_word, text=chosen_word["English"])
 
 window = Tk()
 window.title("Flashcards")
