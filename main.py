@@ -1,6 +1,6 @@
 import random
 from tkinter import *
-from tkinter import messagebox
+# from tkinter import messagebox
 
 import pandas
 
@@ -13,7 +13,7 @@ chosen_word = {}
 try:
     data = pandas.read_csv("data/to_learn.csv")
 except FileNotFoundError:
-    messagebox.showinfo(title="New File", message="No File found.\nNew file created!")
+    # messagebox.showinfo(title="New File", message="No File found.\nNew file created!")
     data = pandas.read_csv("data/french_words.csv")
     to_learn = data.to_dict(orient="records")
 else:
