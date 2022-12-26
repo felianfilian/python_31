@@ -1,22 +1,31 @@
 import random
 from tkinter import *
+from tkinter import messagebox
+
 import pandas
 
 BACKGROUND_COLOR = "#B1DDC6"
 FONT_01 = ("Arial", 40, "italic")
 FONT_02 = ("Arial", 60, "bold")
 
-data = pandas.read_csv("data/french_words.csv")
+
 to_learn = data.to_dict(orient="records")
 chosen_word = {}
 
 try:
-    pass
+    data = pandas.read_csv("data/to_learn.csv")
 except FileNotFoundError:
-    pass
+    messagebox.showinfo(title="New File", message="No File found.\nNew file created!")
+    data = pandas.read_csv("data/french_words.csv")
+    to_learn = data.to_dict(orient="records")
+else:
+    to_learn = data.to_dict(orient="records")
+
 
 def right_answer():
     to_learn.remove(chosen_word)
+    data = pandas.DataFrame(to_learn)
+    data.to_csv("to_leanr.csv", index=False)
     next_card()
 
 
