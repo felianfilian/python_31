@@ -1,6 +1,6 @@
 import random
 from tkinter import *
-# from tkinter import messagebox
+from tkinter import messagebox
 
 import pandas
 
@@ -10,20 +10,10 @@ FONT_02 = ("Arial", 60, "bold")
 
 chosen_word = {}
 
-try:
-    data = pandas.read_csv("data/to_learn.csv")
-except FileNotFoundError:
-    # messagebox.showinfo(title="New File", message="No File found.\nNew file created!")
-    data = pandas.read_csv("data/french_words.csv")
-    to_learn = data.to_dict(orient="records")
-else:
-    to_learn = data.to_dict(orient="records")
-
-
 def right_answer():
     to_learn.remove(chosen_word)
     data = pandas.DataFrame(to_learn)
-    data.to_csv("data/to_leanr.csv", index=False)
+    data.to_csv("data/to_learn.csv", index=False)
     next_card()
 
 
@@ -45,6 +35,15 @@ def show_back():
 window = Tk()
 window.title("Flashcards")
 window.config(padx=50, pady=50, bg=BACKGROUND_COLOR)
+
+try:
+    data = pandas.read_csv("data/to_learn.csv")
+except FileNotFoundError:
+    messagebox.showinfo(title="New File", message="No File found.\nNew file created!")
+    data = pandas.read_csv("data/french_words.csv")
+    to_learn = data.to_dict(orient="records")
+else:
+    to_learn = data.to_dict(orient="records")
 
 flip_timer = window.after(3000, show_back)
 
