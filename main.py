@@ -8,8 +8,6 @@ BACKGROUND_COLOR = "#B1DDC6"
 FONT_01 = ("Arial", 40, "italic")
 FONT_02 = ("Arial", 60, "bold")
 
-
-to_learn = data.to_dict(orient="records")
 chosen_word = {}
 
 try:
@@ -25,7 +23,7 @@ else:
 def right_answer():
     to_learn.remove(chosen_word)
     data = pandas.DataFrame(to_learn)
-    data.to_csv("to_leanr.csv", index=False)
+    data.to_csv("data/to_leanr.csv", index=False)
     next_card()
 
 
